@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | 企业级智能客服 Agent | 咨询接待与人工协同 | Python、企业微信、结构化模型决策、Markdown 检索、SQLite 持久化队列 | [项目介绍](projects/customer-service-agent/README.md) · [核心代码](projects/customer-service-agent/src/service_agent/) |
 | 工程文件翻译工作台 | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑 | [免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) · [项目与代码](projects/engineering-translation/) |
-| 婚纱工作室展示与预约网站 | 款式浏览与预约申请 | 原生前端、滚动交互、原生 dialog、HTTP 表单、SQLite 事务幂等与限流 | [项目介绍](projects/bridal-studio-website/README.md) · [前端代码](projects/bridal-studio-website/web/) · [预约核心](projects/bridal-studio-website/src/bridal_demo/) |
+| 婚纱工作室展示与预约网站 | 款式浏览与预约申请 | 原生前端、滚动交互、原生 dialog、HTTP 表单、SQLite 事务幂等与限流 | [免登录预览](https://niko-97xq.github.io/project-portfolio/bridal-studio/) · [项目与代码](projects/bridal-studio-website/README.md) |
 
 这里只展示已经整理的项目，不将计划中的工作列为已完成成果。后续项目会继续添加到本表。
 
@@ -52,7 +52,7 @@ scripts/
 
 新增项目时，在 `projects/` 下使用独立目录，并参考 [项目模板](templates/project/README.md) 补齐材料，无需改动已有项目代码。
 
-安装项目测试依赖后，在仓库根目录运行 `python scripts/run_checks.py` 即可复现检查。当前未启用 GitHub Actions，不将本地验证描述为云端 CI。
+安装项目测试依赖后，在仓库根目录运行 `python scripts/run_checks.py` 即可复现 Python 项目的检查。当前未添加自定义测试工作流，不将本地验证描述为云端 CI；GitHub Pages 的站点发布构建不等于这些测试已在云端执行。
 
 ## 公开范围
 

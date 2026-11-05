@@ -49,9 +49,11 @@ async function main() {
     const errors = [];
     const external = [];
     const failed = [];
+    const posts = [];
     page.on('pageerror', error => { errors.push(error.message); console.error('Page error:', error.message); });
     page.on('request', request => {
       if (new URL(request.url()).origin !== server.url) external.push(request.url());
+      if (request.method() === 'POST') posts.push(request.url());
     });
     page.on('response', response => { if (response.status() >= 400) failed.push(response.url()); });
     await page.goto(server.url);
@@ -162,10 +164,31 @@ async function main() {
       await Promise.resolve();
       return track.readyState;
     }), 'ended');
+
+    const docs = path.resolve(root, '../../docs');
+    await page.route(server.url + '/pages/**', async route => {
+      const relative = decodeURIComponent(new URL(route.request().url()).pathname.slice('/pages/'.length));
+      let file = path.resolve(docs, relative || 'index.html');
+      if (file !== docs && !file.startsWith(docs + path.sep)) return route.fulfill({status: 404});
+      if (fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
+      const types = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml'};
+      return route.fulfill({status: 200, contentType: types[path.extname(file)], body: fs.readFileSync(file)});
+    });
+    const postsBeforePreview = posts.length;
+    await page.goto(server.url + '/pages/bridal-studio/');
+    await page.getByRole('navigation', {name: '主导航'}).getByRole('link', {name: 'Contact', exact: true}).click();
+    await page.getByRole('textbox', {name: '怎么称呼你'}).fill('Static Demo Visitor');
+    await page.getByRole('textbox', {name: '联系电话'}).fill('+12025550151');
+    await page.getByRole('textbox', {name: '意向试纱日期', exact: true}).fill(tomorrow);
+    await page.getByRole('checkbox').check();
+    await page.getByRole('button', {name: '校验演示表单'}).click();
+    await page.getByText('表单校验通过。此为静态展示，未发送资料，也未创建预约申请。', {exact: true}).waitFor();
+    assert.equal(posts.length, postsBeforePreview, 'Static preview must not submit data');
+    assert.equal(await page.locator('#appointmentResult').isVisible(), false);
     assert.deepEqual(errors, []);
     assert.deepEqual(failed, []);
     assert.deepEqual(external, []);
-    console.log('Browser checks passed: desktop/mobile, real synthetic HTTP form, dialog lifecycle, scroll/keyboard, reduced motion, camera lifecycle, no failed assets and no external requests.');
+    console.log('Browser checks passed: desktop/mobile, real synthetic HTTP form, dialog lifecycle, scroll/keyboard, reduced motion, camera lifecycle, preview-only form without POST, no failed assets and no external requests.');
   } finally {
     if (browser) await browser.close();
     if (server.child.exitCode === null) {

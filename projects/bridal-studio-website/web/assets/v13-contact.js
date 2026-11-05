@@ -58,6 +58,18 @@
     }
   });
   document.querySelectorAll('.step-dot').forEach(dot => dot.setAttribute('aria-pressed',String(dot.classList.contains('active'))));
+  if (document.documentElement.dataset.submissionMode === 'preview-only') {
+    submit.disabled = false;
+    submit.textContent = '校验演示表单';
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      status.removeAttribute('data-error');
+      status.textContent = '表单校验通过。此为静态展示，未发送资料，也未创建预约申请。';
+      revealNotice(status);
+    });
+    return;
+  }
   if (!['https:','http:'].includes(location.protocol) || !crypto.randomUUID) {
     status.textContent = '请在 HTTPS 线上官网中提交预约申请。';
     return;

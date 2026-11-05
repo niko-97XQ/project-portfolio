@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="sBgA" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#E8DCCB"></stop>
+<stop offset="40%" stop-color="#D4C2A8"></stop>
+<stop offset="100%" stop-color="#6B5644"></stop>
+</linearGradient>
+<linearGradient id="sFloorA" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3A2D22"></stop>
+<stop offset="100%" stop-color="#1F1812"></stop>
+</linearGradient>
+<linearGradient id="sDressA" x1="0.5" x2="0.5" y1="0" y2="1">
+<stop offset="0%" stop-color="#FBF6EE" stop-opacity="0.95"></stop>
+<stop offset="60%" stop-color="#F2E8D6" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#D9C9AE" stop-opacity="0.7"></stop>
+</linearGradient>
+<radialGradient cx="0.5" cy="0.5" id="sGlowA" r="0.5">
+<stop offset="0%" stop-color="#FFE9C4" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#FFE9C4" stop-opacity="0"></stop>
+</radialGradient>
+<linearGradient id="sWindowA" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FFE6B8" stop-opacity="0.55"></stop>
+<stop offset="100%" stop-color="#FFE6B8" stop-opacity="0.1"></stop>
+</linearGradient>
+<radialGradient cx="0.5" cy="0.5" id="sVigA" r="0.75">
+<stop offset="60%" stop-color="#000" stop-opacity="0"></stop>
+<stop offset="100%" stop-color="#000" stop-opacity="0.45"></stop>
+</radialGradient>
+</defs>
+<rect fill="url(#sBgA)" height="900" width="1600"></rect>
+<rect fill="url(#sWindowA)" height="380" width="220" x="120" y="160"></rect>
+<rect fill="#FFEDC8" height="340" opacity="0.25" width="160" x="160" y="180"></rect>
+<line opacity="0.4" stroke="#8B7558" stroke-width="2" x1="240" x2="240" y1="180" y2="520"></line>
+<line opacity="0.4" stroke="#8B7558" stroke-width="2" x1="160" x2="320" y1="350" y2="350"></line>
+<ellipse cx="900" cy="380" fill="url(#sGlowA)" rx="700" ry="480"></ellipse>
+<rect fill="url(#sFloorA)" height="220" width="1600" x="0" y="680"></rect>
+<line opacity="0.4" stroke="#5A4633" stroke-width="0.5" x1="0" x2="1600" y1="700" y2="700"></line>
+<line opacity="0.25" stroke="#5A4633" stroke-width="0.5" x1="0" x2="1600" y1="790" y2="790"></line>
+<line opacity="0.85" stroke="#3A2D22" stroke-width="3" x1="780" x2="1020" y1="120" y2="120"></line>
+<line opacity="0.75" stroke="#3A2D22" stroke-width="2.5" x1="780" x2="780" y1="120" y2="60"></line>
+<line opacity="0.75" stroke="#3A2D22" stroke-width="2.5" x1="1020" x2="1020" y1="120" y2="60"></line>
+<circle cx="780" cy="58" fill="#3A2D22" opacity="0.85" r="5"></circle>
+<circle cx="1020" cy="58" fill="#3A2D22" opacity="0.85" r="5"></circle>
+<path d="M 900 120 Q 900 110 895 108 Q 890 107 890 113" fill="none" opacity="0.85" stroke="#3A2D22" stroke-width="2.5"></path>
+<!-- 礼服 -->
+<path d="M 855 130 Q 845 175 850 220 Q 855 260 870 290 L 930 290 Q 945 260 950 220 Q 955 175 945 130 Z" fill="url(#sDressA)" opacity="0.95"></path>
+<path d="M 870 290 Q 820 420 760 580 Q 720 660 700 720 L 1100 720 Q 1080 660 1040 580 Q 980 420 930 290 Z" fill="url(#sDressA)" opacity="0.92"></path>
+<path d="M 880 300 Q 855 440 810 600 Q 780 670 770 720" fill="none" opacity="0.45" stroke="#C9B696" stroke-width="1.2"></path>
+<path d="M 920 300 Q 920 460 920 720" fill="none" opacity="0.3" stroke="#C9B696" stroke-width="1"></path>
+<path d="M 960 300 Q 980 440 1010 600 Q 1025 670 1030 720" fill="none" opacity="0.45" stroke="#C9B696" stroke-width="1.2"></path>
+<path d="M 700 720 Q 620 745 540 770 Q 480 790 440 820 L 1180 820 Q 1130 790 1080 770 Q 1000 745 1100 720 Z" fill="url(#sDressA)" opacity="0.78"></path>
+<ellipse cx="900" cy="290" fill="#F5EAD2" opacity="0.6" rx="58" ry="6"></ellipse>
+<rect fill="url(#sVigA)" height="900" width="1600"></rect>
+</svg>
