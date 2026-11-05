@@ -19,7 +19,10 @@ PRODUCTION = re.compile(
     r"|(?<!\d)1[3-9]\d{9}(?!\d)"
     r"|(?<!\d)(?:\d{1,3}\.){3}\d{1,3}(?!\d)"
 )
-ALLOWED_HOSTS = {"niko-97xq.github.io", "github.com", "api.deepseek.com", "qyapi.weixin.qq.com", "example.test"}
+ALLOWED_HOSTS = {
+    "niko-97xq.github.io", "github.com", "api.deepseek.com", "qyapi.weixin.qq.com", "example.test",
+    "api.forthatday-studio.com",  # Public front-of-house website link, not an operations endpoint.
+}
 
 
 def main() -> None:

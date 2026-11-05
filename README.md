@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | 企业级智能客服 Agent | 咨询接待与人工协同 | Python、企业微信、结构化模型决策、Markdown 检索、SQLite 持久化队列 | [项目介绍](projects/customer-service-agent/README.md) · [核心代码](projects/customer-service-agent/src/service_agent/) |
 | 工程文件翻译工作台 | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑 | [免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) · [项目与代码](projects/engineering-translation/) |
+| 婚纱工作室官网（V13 原版） | 款式展示与预约申请 | 原生前端、滚动时间轴、响应式布局、dialog、提交状态与幂等重试 | [原版官网](https://api.forthatday-studio.com/bridal/) · [项目与代码](projects/bridal-studio-website/) |
 
 这里只展示已经整理的项目，不将计划中的工作列为已完成成果。后续项目会继续添加到本表。
 
