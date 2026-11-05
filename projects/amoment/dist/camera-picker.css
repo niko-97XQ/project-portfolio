@@ -1,0 +1,131 @@
+.camera-picker-actions { display: none; }
+.studio.is-selecting {
+  --picker-header: 76px;
+  --picker-controls: clamp(180px, 24svh, 230px);
+  min-height: 100svh;
+  background: #080909;
+}
+.is-selecting :is(.camera-rail,.control-workspace,.view-tabs,.print-picker,.file-name,.studio-actions,.camera-bottom,#camera-status) { display: none; }
+.is-selecting .camera-workspace {
+  display: block;
+  height: calc(100svh - var(--picker-header));
+  min-height: 320px;
+}
+.is-selecting .center-workspace, .is-selecting .camera-stage { height: 100%; min-height: 0; }
+.is-selecting .camera-stage {
+  isolation: isolate;
+  background: radial-gradient(ellipse at 50% 37%, #222522 0%, #131513 27%, #080909 68%);
+}
+.is-selecting .camera-stage::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(100% - var(--picker-controls) - 9%);
+  width: min(29vw, 360px);
+  height: 20px;
+  transform: translateX(-50%);
+  background: #000;
+  filter: blur(13px);
+  border-radius: 50%;
+  opacity: .7;
+}
+.is-selecting #camera-canvas, .is-selecting #camera-fallback {
+  inset: 0;
+  width: 100%;
+  height: calc(100% - var(--picker-controls));
+  animation: camera-suspension 5.2s ease-in-out infinite;
+}
+@keyframes camera-suspension {
+  0%,100% { transform: translateY(-5px); }
+  50% { transform: translateY(5px); }
+}
+.is-selecting .camera-caption { inset: auto 12px 113px; text-align: center; }
+.is-selecting .camera-caption p { margin: 0 0 8px; color: #b0ada0; }
+.is-selecting .camera-caption h1 {
+  margin: 0;
+  max-width: none;
+  font: 400 clamp(32px, 4.8vw, 68px)/1.04 Georgia, serif;
+  letter-spacing: -.045em;
+  color: #f1ede3;
+}
+.is-selecting .camera-picker-actions {
+  position: absolute;
+  inset: auto 0 13px;
+  display: grid;
+  justify-items: center;
+}
+.picker-buttons { display: flex; gap: 14px; align-items: center; }
+.picker-buttons button { background: #20221f; color: #e8e5d9; height: 42px; min-width: 42px; border: 0; border-radius: 40px; font: inherit; cursor: pointer; }
+.picker-buttons #use-camera { padding: 0 25px; font-size: 13px; background: #e7e1d5; color: #171916; }
+.picker-buttons button:hover { filter: brightness(1.18); }
+.picker-hint { margin: 10px 0; font-size: 11px; color: #9a9c91; }
+.picker-hint span + span { display: none; }
+@media (pointer: coarse) {
+  .picker-hint span { display: none; }
+  .picker-hint span + span { display: inline; }
+}
+@media (max-width: 700px) {
+  .studio.is-selecting { --picker-header:67px; --picker-controls:175px; }
+  .is-selecting .camera-caption { bottom: 115px; }
+  .studio-actions { flex-wrap: wrap; justify-content: end; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-selecting #camera-canvas, .is-selecting #camera-fallback { animation: none; }
+}
+#back-to-cameras { display: none; }
+.is-selecting.choosing-film #back-to-cameras { display: inline-flex; color: #d0cbbf; }
+
+.is-selecting.choosing-film .camera-caption h1 {
+  font-family: Bahnschrift, "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(30px, 3.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.015em;
+}
+
+
+
+/* Editing and finishing share the photo, with one set of tools at a time. */
+.studio:not(.is-selecting) .camera-workspace { grid-template-columns: minmax(0, 1fr) clamp(245px, 23vw, 330px); }
+.studio:not(.is-finishing) :is(.finish-only,.print-panel),
+.studio.is-finishing :is(.edit-only,#import-button,.adjust-panel,.extra-looks,.samples,#compare-button,#gear-button) { display: none; }
+.studio:not(.is-selecting) .control-workspace { padding: 30px clamp(18px, 2.6vw, 40px); }
+.control-workspace .panel-heading h2 { font-size: 18px; letter-spacing: -.02em; }
+.control-workspace .adjustment label { font-size: 13px; }
+.studio .control-workspace .reset-button { padding: 6px 0; font-size: 12px; }
+.studio .extra-looks { margin-top: 28px; }
+.studio summary { cursor: pointer; font-size: 12px; color: #a9afa8; padding: 8px 0; }
+.studio .samples { text-align: center; }
+.samples .sample-tray { margin-top: 5px; }
+.studio:not(.is-selecting) .image-workspace { padding-top: 20px; }
+.studio:not(.is-selecting) .photo-view, .studio:not(.is-selecting) .photo-view canvas { max-height: calc(100svh - 265px); }
+.edit-selection { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 12px; }
+.edit-selection #current-camera { color: #92978e; }
+.edit-selection > span { font-size: 13px; }
+.studio #gear-button { color: #eee9dd; background: #21241f; padding: 7px 12px; border-radius: 20px; font-size: 12px; }
+.studio .image-toolbar { height: auto; min-height: 34px; gap: 14px; }
+.studio .export-button { border-radius: 20px; font-size: 12px; }
+#gear-panel { position: fixed; inset: 0; margin: auto; width: min(440px, 90vw); height: fit-content; max-height: 70svh; padding: 16px; border: none; border-radius: 14px; background: #151815; color: #eee; }
+#gear-panel::backdrop { background: #0009; }
+#gear-panel .collection-header { top: -16px; background: #151815; }
+#gear-panel .collection-tabs { flex-direction: row; }
+#gear-panel #camera-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+#gear-panel .camera-choice { padding: 6px; }
+#gear-panel .camera-choice[aria-pressed="true"] { background: #323931; color: white; }
+.print-panel .print-picker { padding: 0; }
+.print-panel #print-choices { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 5px; }
+.print-panel .print-choice { white-space: normal; font-size: 10px; }
+.print-panel .print-selection { margin: 20px 0; }
+@media(max-width:700px) {
+ .studio:not(.is-selecting) .camera-workspace { display: flex; height: auto; flex-direction: column; }
+ .studio:not(.is-selecting) .center-workspace { min-height: 0; }
+ .studio:not(.is-selecting) .control-workspace { display: block; padding: 16px 20px 30px; }
+ .studio:not(.is-selecting) .photo-view, .studio:not(.is-selecting) .photo-view canvas { max-height: 50svh; }
+ .studio .image-workspace .photo-view { min-height: 0; }
+ .studio .image-toolbar { margin-bottom: 14px; }
+ .edit-selection { gap: 4px 8px; }
+ .edit-selection > span { font-size: 11px; }
+ .studio .image-bottom { margin-top: 8px; }
+ .studio .image-bottom span { display: inline; }
+ .studio .export-button { padding: 9px 12px; }
+}

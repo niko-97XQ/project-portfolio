@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Amoment. A quiet place for photographs, film, and the moments in between.">
+  <title>Amoment — A moment, held.</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./camera-picker.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <section id="cover" class="cover" tabindex="-1" aria-label="Amoment film room cover">
+    <header class="cover-header"><a class="brand" href="./" aria-label="Amoment home"><img src="./assets/mark.svg" alt="" width="28" height="28"><span>Amoment</span></a></header>
+    <canvas id="cover-canvas" aria-label="A diagonal film strip and optical loupe"></canvas>
+
+    <div class="loading" id="loading" role="status"><span></span></div>
+    <button id="darkroom-switch" class="darkroom-switch" aria-label="Pull the darkroom light switch to enter the studio">
+      <span class="pull-assembly" aria-hidden="true"><span class="pull-cord"></span><span class="pull-handle"></span></span>
+    </button>
+    <div class="darkroom-wash" aria-hidden="true"></div>
+    <div class="cover-copy" hidden><h1>A moment, held.</h1><p id="cover-instruction">Move to inspect. Press to enter.</p></div>
+    <footer class="cover-footer"><span class="edition" hidden></span><div class="cover-tools"><button id="motion-button" aria-label="Pause film movement" aria-pressed="false"><svg viewBox="0 0 18 18" aria-hidden="true"><path id="motion-symbol" d="M6 5v8M12 5v8"/></svg></button><button id="credits-button" aria-label="Photo credits">ⓘ</button></div></footer>
+    <div class="darkroom-curtain curtain-left" aria-hidden="true"></div><div class="darkroom-curtain curtain-right" aria-hidden="true"></div>
+  </section>
+  <main id="studio" class="studio" hidden inert aria-label="Photo studio">
+    <header class="studio-header"><button id="back-cover" class="brand brand-button" aria-label="Back to cover"><img src="./assets/mark.svg" width="25" height="25" alt=""><span>Amoment</span><small>STUDIO</small></button><button class="text-button" id="back-to-cameras">← Cameras</button><span id="file-name" class="file-name">Coast · Sample</span><div class="studio-actions"><button id="back-edit" class="text-button finish-only">← Edit photo</button><button id="import-button" class="text-button">Import photo <span aria-hidden="true">+</span></button><button id="finish-button" class="export-button edit-only">Finish print →</button><button id="export-button" class="export-button finish-only">Export JPG <span aria-hidden="true">↗</span></button></div></header>
+    <section class="workspace camera-workspace">
+<aside class="camera-rail" id="gear-panel" popover aria-label="Camera and film"><div class="collection-header"><div class="rail-title">COLLECTION <span id="collection-count">06</span></div><div class="collection-tabs"><button data-collection="cameras" aria-pressed="true">Cameras</button><button data-collection="film" aria-pressed="false">Film</button></div></div><div id="camera-list"></div></aside>
+      <div class="center-workspace"><div class="view-tabs" id="photo-return" hidden><button id="photo-tab">Back to photograph</button></div><section id="camera-stage" class="camera-stage" aria-label="Interactive model"><div class="camera-caption" aria-live="polite"><p id="camera-format">MEDIUM FORMAT / 6 × 6</p><h1 id="camera-name">Hasselblad 500C/M</h1></div><canvas id="camera-canvas" aria-label="Drag to rotate the selected model"></canvas><img id="camera-fallback" alt="Selected model" hidden><div class="camera-bottom"><span id="camera-detail">A12 · Planar 80mm · Waist-level finder</span><button id="reset-camera" aria-label="Reset model view">↺</button></div><div class="camera-picker-actions"><div class="picker-buttons"><button id="previous-camera" aria-label="Previous camera">←</button><button id="use-camera">Use this camera</button><button id="next-camera" aria-label="Next camera">→</button></div><p class="picker-hint"><span>Scroll to choose</span><span>Swipe to choose</span></p></div><p id="camera-status" role="status">Loading camera…</p></section><div class="image-workspace" id="photo-stage" hidden>
+        <div class="image-toolbar"><div class="edit-selection"><button id="gear-button" class="text-button" popovertarget="gear-panel" aria-label="Choose camera and film">Camera &amp; film ▾</button><span id="current-camera"></span><span id="look-name">Original</span></div><button id="compare-button" class="text-button" aria-pressed="false">Compare <span aria-hidden="true">◧</span></button></div>
+        <div class="photo-view" id="photo-view"><canvas id="photo-canvas" aria-label="Your photograph with the selected film look"></canvas><div id="compare-overlay" class="compare-overlay" hidden><span class="original-label">ORIGINAL</span><span class="graded-label">FILM</span><div class="compare-divider" id="compare-divider"><span>↔</span></div><input id="compare-slider" type="range" min="0" max="100" value="50" aria-label="Original and film comparison position"></div></div>
+        <div class="image-bottom"><span id="image-dimensions">Loading photograph</span></div><details class="samples"><summary>Sample photos</summary><div class="sample-tray" id="sample-tray"></div></details>
+      </div>
+      </div><div class="control-workspace">      
+      <aside class="print-panel" aria-label="Print format"><div class="panel-heading"><h2>Print format</h2></div><div class="print-picker"><div id="print-choices" aria-label="Choose a print style"></div></div><select id="print-template" aria-label="Print template" hidden></select><p class="print-selection" id="print-selection">No border</p><div id="print-options" hidden><div class="adjustment"><label for="print-width">Border width<output id="print-width-value">100%</output></label><input type="range" id="print-width" min="50" max="180" step="5" value="100"></div><label class="print-field" id="print-fit-field" for="print-fit" hidden>Photo fitting<select id="print-fit"><option value="contain">Keep whole photo</option><option value="cover">Fill & crop</option></select></label></div></aside><aside class="adjust-panel" aria-label="Photo adjustments"><div class="panel-heading"><h2>Adjustments</h2></div><div id="adjustments"></div><button id="reset-button" class="reset-button">Reset adjustments ↺</button><div class="studio-detail"><span class="tiny-line"></span><p>Your photograph stays<br>in your browser.</p></div></aside>
+    <details class="extra-looks"><summary>More looks</summary><div id="look-list" class="look-list"></div></details></div></section>
+    <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp,image/avif" hidden><div class="drop-overlay" id="drop-overlay" hidden>Drop a moment here.</div>
+  </main>
+  <dialog id="credits-dialog"><button class="dialog-close" aria-label="Close photo credits">×</button><p class="dialog-label">THROUGH THEIR EYES</p><h2>Moments, generously shared.</h2><ul id="photo-credits"></ul><a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash License ↗</a></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
+
+
+
+
