@@ -98,6 +98,7 @@ async function main() {
     assert.equal(await page.locator('.bridal-edit-track').evaluate(element => getComputedStyle(element).transform), 'none');
 
     await page.setViewportSize({width: 375, height: 812});
+    await page.emulateMedia({reducedMotion: 'no-preference'});
     await page.goto(server.url);
     await page.screenshot({path: path.join(artifacts, 'mobile.png')});
     const overflowing = await page.evaluate(() => ({width: innerWidth, scrollWidth: document.documentElement.scrollWidth,
