@@ -1,59 +1,51 @@
 # 项目作品集
 
-面向技术面试与代码评审的个人项目索引。每个项目独立组织背景、技术方案、核心代码、验证方法与已知限制。
+用于技术面试和项目交流的个人项目展示仓库。按真实应用场景介绍项目，提供原版业务源码、功能说明、架构与测试。
 
 ## 项目目录
 
-| 项目 | 场景 | 技术重点 | 查看 |
+| 项目 | 应用场景 | 能做什么 | 技术栈 |
 | --- | --- | --- | --- |
-| 企业级智能客服 Agent | 咨询接待与人工协同 | Python、企业微信、结构化模型决策、Markdown 检索、SQLite 持久化队列 | [项目介绍](projects/customer-service-agent/README.md) · [核心代码](projects/customer-service-agent/src/service_agent/) |
+| [Forthatday 企业微信智能客服](projects/customer-service-agent/README.md) | 婚纱工作室的到店前咨询、试纱预约和店员协同 | 自动问答、款式推荐与发图、预约确认、付款截图识别、改期取消、人工接管、库存与预约管理、官网预约申请 | Python、DeepSeek、企业微信 API、Markdown 检索、SQLite、RapidOCR、Docker |
 
-这里只展示已经整理的项目，不将计划中的工作列为已完成成果。后续项目会继续添加到本表。
+目前先展示这个实际项目，其他项目后续独立加入 `projects/`，不把计划中的工作写成已完成成果。
 
-## 建议阅读顺序
+## Forthatday：从咨询到到店试纱
 
-1. 阅读项目介绍，了解问题、解决方案和实现边界。
-2. 查看技术架构与设计取舍，理解为什么这样设计。
-3. 运行离线演示和测试，再阅读对应代码。
-4. 查看工程案例，讨论故障定位、状态一致性和改进方向。
+顾客在微信里询问试纱规则、门店位置或婚纱款式，AI 根据企业知识回答并了解偏好。希望到店时，系统收集预约意向并通知店员确认；确认后发送付款码，识别顾客提交的付款截图，符合业务规则时确认预约，不确定时由店员复核。
 
-第一个项目的入口：[技术架构](projects/customer-service-agent/docs/architecture.md)、[工程案例](projects/customer-service-agent/docs/engineering-cases.md)、[验证记录](projects/customer-service-agent/docs/validation.md)。
+投诉、退款、特殊价格和无法确认的情况交给店员。人工接管后 AI 停止自动回复，员工处理完后填写摘要，再按平台状态协调交还 AI。员工后台同时提供库存、实体件、尺码、档期、预约日历和官网申请管理。
 
-当前公开节选：61 项本地回归通过，附带无需账号和密钥的离线演示。
+**查看：[应用场景与完整功能](projects/customer-service-agent/README.md) · [原版源码](projects/customer-service-agent/src/forthatday_agent/) · [架构](projects/customer-service-agent/docs/architecture.md) · [工程案例](projects/customer-service-agent/docs/engineering-cases.md)**
 
-## 快速体验
+## 原版范围
 
-需要 Python 3.12；离线演示不需要模型 Key、企业微信账号或生产数据库。
+- 保留原项目 `forthatday_agent` 包名、业务实现、提示词、员工界面、知识检索和平台适配，不再以泛化后的代码节选替代。
+- 包含原版服务启动脚本、数据库迁移、配置模板、Docker 文件和公开业务知识。
+- 业务源码与当前本地 `agent_v2/src/` 按文件 SHA-256 核对；只在历史测试中替换一处私人联系方式。
+- 真实密钥、客户数据库、付款凭证、商品图片、内部品牌清单、服务器连接资料不属于可公开源码，仍不提交。
+
+## 本地验证
 
 ```bash
 git clone https://github.com/niko-97XQ/project-portfolio.git
 cd project-portfolio/projects/customer-service-agent
-python demo.py
+python -m venv .venv
 ```
 
-演示使用真实核心模块和临时数据库，但回答来自明确标注的本地演示引擎，不代表线上模型或微信客户端联调。
+激活虚拟环境后执行：
 
-## 组织方式
-
-```text
-projects/
-  customer-service-agent/   首个项目：公开核心代码与隔离演示
-templates/
-  project/                 后续项目的中文介绍模板
-scripts/
-  check_public_content.py  公开内容基础检查
-  run_checks.py            一键运行公开检查、测试与离线演示
+```bash
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
 ```
 
-新增项目时，在 `projects/` 下使用独立目录，并参考 [项目模板](templates/project/README.md) 补齐材料，无需改动已有项目代码。
+测试使用隔离数据和模拟接口，不会替你发送微信消息。真实运行还需要自己的企业微信授权、模型凭证和私有业务资料，见项目介绍中的配置说明。当前未启用 GitHub Actions。
 
-安装项目测试依赖后，在仓库根目录运行 `python scripts/run_checks.py` 即可复现检查。当前未启用 GitHub Actions，不将本地验证描述为云端 CI。
+2026-11-05，本仓库原版业务代码的 162 项本地回归全部通过。
 
-## 公开范围
+## 新增项目
 
-- 展示代码节选、合成测试数据、设计文档与离线演示，不是生产环境完整备份。
-- 不发布密钥、客户记录、企业内部品牌清单、商品图片、付款码、服务器连接信息或生产运维记录。
-- 未经权利确认的真实录屏和客户截图不随仓库发布。
-- 没有将 Embedding、支付到账核验、高并发压测或未经统计的效果提升写成已完成能力。
+在 `projects/` 下添加独立目录，参考 [项目介绍模板](templates/project/README.md)，补齐应用场景、已实现功能、技术方案、代码、验证和限制，并更新上面的目录。
 
-更多说明见 [公开与隐私边界](SECURITY.md)。仓库未附加通用开源许可证；公开可见不等于授予任意商业复用权限。
+公开边界见 [说明](SECURITY.md)。仓库未附加通用开源许可证；公开可见不等于授予任意商业复用权限。

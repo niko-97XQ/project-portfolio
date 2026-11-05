@@ -9,7 +9,7 @@ from urllib.parse import parse_qs, urlsplit
 SRC = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC))
 
-from service_agent.application.staff_access import (  # noqa: E402
+from forthatday_agent.application.staff_access import (  # noqa: E402
     StaffActionSigner,
     StaffPasswordVerifier,
     StaffSessionSigner,

@@ -1,0 +1,3 @@
+api.forthatday-studio.com {
+	reverse_proxy agent:8080
+}

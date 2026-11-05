@@ -1,0 +1,9 @@
+.env
+.env.production
+data/
+private/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/

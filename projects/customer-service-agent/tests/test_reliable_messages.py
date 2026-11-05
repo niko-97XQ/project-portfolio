@@ -11,12 +11,12 @@ from pathlib import Path
 SRC = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC))
 
-from service_agent.application.message_pipeline import ReliableMessagePipeline  # noqa: E402
-from service_agent.domain.conversations import ConversationOwner  # noqa: E402
-from service_agent.domain.dialogue import CatalogSignal, DialogueDecision  # noqa: E402
-from service_agent.domain.messages import InboundMessage, OutboxMessage  # noqa: E402
-from service_agent.infrastructure.catalog_store import CatalogStore  # noqa: E402
-from service_agent.infrastructure.sqlite_message_store import SqliteMessageStore  # noqa: E402
+from forthatday_agent.application.message_pipeline import ReliableMessagePipeline  # noqa: E402
+from forthatday_agent.domain.conversations import ConversationOwner  # noqa: E402
+from forthatday_agent.domain.dialogue import CatalogSignal, DialogueDecision  # noqa: E402
+from forthatday_agent.domain.messages import InboundMessage, OutboxMessage  # noqa: E402
+from forthatday_agent.infrastructure.catalog_store import CatalogStore  # noqa: E402
+from forthatday_agent.infrastructure.sqlite_message_store import SqliteMessageStore  # noqa: E402
 
 
 NOW = datetime(2026, 7, 23, 8, 0, tzinfo=timezone.utc)
@@ -51,12 +51,12 @@ class FakeDeliveryGateway:
 class CatalogSignalEngine:
     def reply(self, conversation_id: str, messages: tuple) -> DialogueDecision:
         return DialogueDecision(
-            reply="可以先看看 Demo Style 无袖这款。",
+            reply="可以先看看 Verona 无袖这款。",
             memory_updates=(),
             proposed_actions=(),
             needs_human=False,
             reason="",
-            catalog_signals=(CatalogSignal("recommended", "demo-01"),),
+            catalog_signals=(CatalogSignal("recommended", "bau-01"),),
         )
 
 
@@ -76,7 +76,7 @@ class ReliableMessageTests(unittest.TestCase):
     def test_catalog_signal_is_recorded_once_with_dialogue_completion(self) -> None:
         catalog_root = Path(self.temp_dir.name) / "catalog"
         catalog_root.mkdir()
-        (catalog_root / "demo-01.jpg").write_bytes(b"recommended-dress")
+        (catalog_root / "bau-01.jpg").write_bytes(b"recommended-dress")
         manifest = catalog_root / "products.csv"
         with manifest.open("w", encoding="utf-8-sig", newline="") as output:
             writer = csv.DictWriter(
@@ -92,15 +92,15 @@ class ReliableMessageTests(unittest.TestCase):
             writer.writerow(
                 {
                     "catalog_type": "bridal",
-                    "brand_internal": "Demo Brand",
-                    "style_name": "Demo Style 无袖",
-                    "model_code": "demo-01",
+                    "brand_internal": "Bride and You",
+                    "style_name": "Verona 无袖",
+                    "model_code": "bau-01",
                     "description": "无袖缎面婚纱",
-                    "rental_price_internal": "1200",
-                    "purchase_price_internal": "2400",
+                    "rental_price_internal": "6600",
+                    "purchase_price_internal": "15800",
                     "rental_available": "yes",
                     "purchase_or_custom_available": "yes",
-                    "image_path": "demo-01.jpg",
+                    "image_path": "bau-01.jpg",
                     "source_document": "test.csv",
                 }
             )
@@ -123,7 +123,7 @@ class ReliableMessageTests(unittest.TestCase):
             )
         )
         self.assertEqual(gateway.sent[1].message_type, "image")
-        self.assertEqual(gateway.sent[1].payload["catalog_ref"], "demo-01")
+        self.assertEqual(gateway.sent[1].payload["catalog_ref"], "bau-01")
         self.assertNotIn("path", gateway.sent[1].payload)
 
         resend_pipeline = self.pipeline(TextOnlyDecisionEngine(), gateway)
@@ -144,9 +144,9 @@ class ReliableMessageTests(unittest.TestCase):
             )
         )
         self.assertEqual(gateway.sent[-1].message_type, "image")
-        self.assertEqual(gateway.sent[-1].payload["catalog_ref"], "demo-01")
+        self.assertEqual(gateway.sent[-1].payload["catalog_ref"], "bau-01")
 
-        row = next(item for item in catalog.analytics_summary().rows if item.model_code == "demo-01")
+        row = next(item for item in catalog.analytics_summary().rows if item.model_code == "bau-01")
         self.assertEqual(row.demand_signals, 1)
 
     def setUp(self) -> None:

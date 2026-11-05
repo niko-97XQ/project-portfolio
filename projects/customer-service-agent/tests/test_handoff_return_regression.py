@@ -9,12 +9,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 
-from service_agent.application.staff_appointments import PaymentCodes, StaffAppointmentService
-from service_agent.domain.conversations import ConversationOwner
-from service_agent.domain.dialogue import ActionType, DialogueDecision, ProposedAction
-from service_agent.domain.messages import InboundMessage
-from service_agent.infrastructure.sqlite_message_store import SqliteMessageStore
-from service_agent.infrastructure.wecom_api import WeComApiClient, WeComNativeHandoffGateway
+from forthatday_agent.application.staff_appointments import PaymentCodes, StaffAppointmentService
+from forthatday_agent.domain.conversations import ConversationOwner
+from forthatday_agent.domain.dialogue import ActionType, DialogueDecision, ProposedAction
+from forthatday_agent.domain.messages import InboundMessage
+from forthatday_agent.infrastructure.sqlite_message_store import SqliteMessageStore
+from forthatday_agent.infrastructure.wecom_api import WeComApiClient, WeComNativeHandoffGateway
 
 
 class NativeStateTransport:

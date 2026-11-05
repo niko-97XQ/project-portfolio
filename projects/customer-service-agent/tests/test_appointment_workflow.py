@@ -9,18 +9,18 @@ from pathlib import Path
 SRC = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC))
 
-from service_agent.domain.appointments import (  # noqa: E402
+from forthatday_agent.domain.appointments import (  # noqa: E402
     Appointment,
     AppointmentStatus,
     DomainRuleError,
 )
-from service_agent.domain.payments import (  # noqa: E402
+from forthatday_agent.domain.payments import (  # noqa: E402
     PaymentDecision,
     PaymentEvidence,
     PaymentPolicy,
     evaluate_payment_evidence,
 )
-from service_agent.domain.conversations import (  # noqa: E402
+from forthatday_agent.domain.conversations import (  # noqa: E402
     Conversation,
     ConversationOwner,
     HandoffStatus,
@@ -31,8 +31,8 @@ class AppointmentWorkflowTests(unittest.TestCase):
     def test_staff_approval_then_payment_locks_appointment(self) -> None:
         appointment = Appointment(
             conversation_id="customer-1",
-            customer_name="示例顾客",
-            customer_phone="00000000000",
+            customer_name="小许",
+            customer_phone="13800138000",
         )
 
         appointment.submit_time_request("7月30日下午3点")
@@ -95,12 +95,12 @@ class PaymentEvidenceTests(unittest.TestCase):
     def test_matching_evidence_is_accepted(self) -> None:
         evidence = PaymentEvidence(
             amount=Decimal("200.00"),
-            payee="Demo Studio",
+            payee="Forthatday Studio",
             shows_success=True,
             confidence=0.97,
             source_message_id="wecom-msg-1",
         )
-        policy = PaymentPolicy(payee_aliases=("Demo Studio", "DEMO"))
+        policy = PaymentPolicy(payee_aliases=("Forthatday Studio", "FORTHATDAY"))
 
         result = evaluate_payment_evidence(evidence, policy)
 
@@ -115,7 +115,7 @@ class PaymentEvidenceTests(unittest.TestCase):
             confidence=0.98,
             source_message_id="wecom-msg-2",
         )
-        policy = PaymentPolicy(payee_aliases=("Demo Studio",))
+        policy = PaymentPolicy(payee_aliases=("Forthatday Studio",))
 
         result = evaluate_payment_evidence(evidence, policy)
 
@@ -125,7 +125,7 @@ class PaymentEvidenceTests(unittest.TestCase):
     def test_missing_payee_configuration_never_auto_locks(self) -> None:
         evidence = PaymentEvidence(
             amount=Decimal("200.00"),
-            payee="Demo Studio",
+            payee="Forthatday Studio",
             shows_success=True,
             confidence=0.99,
             source_message_id="wecom-msg-3",

@@ -10,18 +10,18 @@ from pathlib import Path
 SRC = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC))
 
-from service_agent.domain.messages import (  # noqa: E402
+from forthatday_agent.domain.messages import (  # noqa: E402
     InboundMessage,
     MessageActor,
     OutboxMessage,
 )
-from service_agent.domain.conversations import ConversationOwner  # noqa: E402
-from service_agent.application.wecom_sync import WeComSyncService  # noqa: E402
-from service_agent.application.staff_access import StaffActionSigner  # noqa: E402
-from service_agent.infrastructure.sqlite_message_store import (  # noqa: E402
+from forthatday_agent.domain.conversations import ConversationOwner  # noqa: E402
+from forthatday_agent.application.wecom_sync import WeComSyncService  # noqa: E402
+from forthatday_agent.application.staff_access import StaffActionSigner  # noqa: E402
+from forthatday_agent.infrastructure.sqlite_message_store import (  # noqa: E402
     SqliteMessageStore,
 )
-from service_agent.infrastructure.wecom_api import (  # noqa: E402
+from forthatday_agent.infrastructure.wecom_api import (  # noqa: E402
     SyncedMessages,
     WeComApiClient,
     WeComApiError,
@@ -254,16 +254,16 @@ class WeComApiTests(unittest.TestCase):
             message = OutboxMessage(
                 id="outbox-catalog-1",
                 conversation_id="conversation-1",
-                idempotency_key="catalog-recommendation:m1:demo-01",
+                idempotency_key="catalog-recommendation:m1:bau-01",
                 actor=MessageActor.AI,
                 message_type="image",
-                payload={"catalog_ref": "demo-01", "position": 0},
+                payload={"catalog_ref": "bau-01", "position": 0},
                 attempt_count=1,
             )
 
             gateway.send(message)
 
-        self.assertEqual(resolver.calls, [("demo-01", 0)])
+        self.assertEqual(resolver.calls, [("bau-01", 0)])
         self.assertEqual(transport.uploads, [image])
 
     def test_api_error_does_not_include_secret(self) -> None:

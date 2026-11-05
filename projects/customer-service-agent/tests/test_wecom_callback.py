@@ -14,14 +14,14 @@ SRC = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC))
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes  # noqa: E402
-from service_agent.infrastructure.wecom_callback_crypto import (  # noqa: E402
+from forthatday_agent.infrastructure.wecom_callback_crypto import (  # noqa: E402
     WeComCallbackCrypto,
 )
-from service_agent.application.wecom_callback import (  # noqa: E402
+from forthatday_agent.application.wecom_callback import (  # noqa: E402
     WeComCallbackReceiver,
     WeComCallbackWorker,
 )
-from service_agent.infrastructure.sqlite_message_store import (  # noqa: E402
+from forthatday_agent.infrastructure.sqlite_message_store import (  # noqa: E402
     SqliteMessageStore,
 )
 
