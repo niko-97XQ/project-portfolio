@@ -20,7 +20,7 @@ IPV4 = re.compile(r"(?<!\d)(?:\d{1,3}\.){3}\d{1,3}(?!\d)")
 TEST_PHONES = {"13800000000", "13800138000", "17300000000"}
 LOCAL_OR_TEST_IPS = {"127.0.0.1", "0.0.0.0", "192.0.2.1"}
 ALLOWED_HOSTS = {
-    "github.com", "api.deepseek.com", "qyapi.weixin.qq.com",
+    "niko-97xq.github.io", "github.com", "api.deepseek.com", "qyapi.weixin.qq.com",
     "api.siliconflow.cn", "open.weixin.qq.com",
     "forthatday-studio.com", "api.forthatday-studio.com",
 }

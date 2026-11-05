@@ -16,7 +16,7 @@ Python 3.12，安装项目依赖后执行：
 python -m unittest discover -s tests -v
 ```
 
-在仓库根目录可以执行 `python scripts/run_checks.py`，完成公开文件基础检查与项目测试。当前未启用 GitHub Actions，不能把本地结果说成云端 CI 已通过。
+在仓库根目录可以执行 `python scripts/run_checks.py`，完成公开文件基础检查与客服项目测试。客服项目未启用 GitHub Actions 自动测试，不能把本地结果说成云端 CI 已通过。
 
 ## 验证内容
 

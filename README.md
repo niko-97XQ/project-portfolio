@@ -7,8 +7,10 @@
 | 项目 | 应用场景 | 能做什么 | 技术栈 |
 | --- | --- | --- | --- |
 | [Forthatday 企业微信智能客服](projects/customer-service-agent/README.md) | 婚纱工作室的到店前咨询、试纱预约和店员协同 | 自动问答、款式推荐与发图、预约确认、付款截图识别、改期取消、人工接管、库存与预约管理、官网预约申请 | Python、DeepSeek、企业微信 API、Markdown 检索、SQLite、RapidOCR、Docker |
+| [工程文件翻译工作台](projects/engineering-translation/) | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑；[免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) | 模型翻译、SQLite 队列、逐页检查点、浏览器演示 |
+| [婚纱工作室官网（V13 原版）](projects/bridal-studio-website/) | 款式展示与预约申请 | 滚动时间轴、响应式布局、预约弹窗、提交状态与幂等重试；[原版官网](https://api.forthatday-studio.com/bridal/) | 原生前端、CSS、JavaScript、dialog |
 
-目前先展示这个实际项目，其他项目后续独立加入 `projects/`，不把计划中的工作写成已完成成果。
+每个项目独立放在 `projects/` 下；后续继续添加，不把计划中的工作写成已完成成果。
 
 ## Forthatday：从咨询到到店试纱
 
@@ -18,7 +20,7 @@
 
 **查看：[应用场景与完整功能](projects/customer-service-agent/README.md) · [原版源码](projects/customer-service-agent/src/forthatday_agent/) · [架构](projects/customer-service-agent/docs/architecture.md) · [工程案例](projects/customer-service-agent/docs/engineering-cases.md)**
 
-## 原版范围
+## 客服项目原版范围
 
 - 保留原项目 `forthatday_agent` 包名、业务实现、提示词、员工界面、知识检索和平台适配，不再以泛化后的代码节选替代。
 - 包含原版服务启动脚本、数据库迁移、配置模板、Docker 文件和公开业务知识。
@@ -40,7 +42,7 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-测试使用隔离数据和模拟接口，不会替你发送微信消息。真实运行还需要自己的企业微信授权、模型凭证和私有业务资料，见项目介绍中的配置说明。当前未启用 GitHub Actions。
+测试使用隔离数据和模拟接口，不会替你发送微信消息。真实运行还需要自己的企业微信授权、模型凭证和私有业务资料，见项目介绍中的配置说明。客服项目当前未启用 GitHub Actions 自动测试。
 
 2026-11-05，本仓库原版业务代码的 162 项本地回归全部通过。
 
