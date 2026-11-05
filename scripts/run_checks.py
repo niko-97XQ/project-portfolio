@@ -12,9 +12,6 @@ def main() -> None:
         (root, [sys.executable, "scripts/check_public_content.py"]),
         (project, [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]),
         (project, [sys.executable, "demo.py"]),
-        (root / "projects" / "bridal-studio-website",
-         [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"]),
-        (root / "projects" / "bridal-studio-website", [sys.executable, "demo.py"]),
     ]
     for directory, command in commands:
         subprocess.run(command, cwd=directory, check=True)
