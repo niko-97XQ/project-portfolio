@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex" name="robots"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<title>虚拟试纱 · Bridal Studio</title>
+<link href="assets/v13-tryon.css?v=20261028-prep1" rel="stylesheet"/>
+<script defer="" src="assets/v13-tryon.js?v=20261028-prep1"></script>
+</head>
+<body>
+<header class="fitting-header">
+<a class="fitting-wordmark" href="index.html#home">Bridal Studio<span>DEMO CITY</span></a>
+<a class="fitting-back" href="index.html#lookbook">返回品牌选辑 <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+<div class="fitting-heading">
+<div><p class="eyebrow">THE FITTING ROOM</p><h1>在那一天之前。</h1></div>
+<p class="connection-label"><span aria-hidden="true" class="status-dot"></span>Anywear · 接入准备</p>
+</div>
+<div class="fitting-workspace">
+<section aria-label="本地摄像头预览" class="camera-tool">
+<div class="camera-surface" id="cameraSurface">
+<video aria-label="原始摄像头画面，非换装效果" autoplay="" hidden="" id="cameraPreview" muted="" playsinline=""></video>
+<div class="camera-empty" id="cameraEmpty">
+<span aria-hidden="true" class="mirror-number">01</span>
+<p class="eyebrow">YOUR OWN REFLECTION</p>
+<h2>先见到，<br/><em>镜头里的自己。</em></h2>
+<p>选一件喜欢的婚纱，<br/>再开启本地摄像头预览。</p>
+<button class="button button-primary" id="startCamera" type="button">开启摄像头</button>
+</div>
+<div class="camera-caption" hidden="" id="cameraCaption"><span aria-hidden="true" class="status-dot"></span>本地原始画面 · 尚未换装</div>
+</div>
+<div class="camera-toolbar">
+<p aria-live="polite" id="cameraStatus" role="status">摄像头未开启</p>
+<div class="camera-actions">
+<button aria-pressed="true" class="button button-small" disabled="" id="mirrorCamera" type="button">镜像</button>
+<button class="button button-small" disabled="" id="stopCamera" type="button">关闭摄像头</button>
+</div>
+</div>
+<p class="camera-privacy">本地预览不上传、不录制，也不启用麦克风。离开页面或切到后台会自动关闭摄像头。</p>
+</section>
+<aside aria-labelledby="garmentHeading" class="garment-panel">
+<div class="garment-panel-heading"><p class="eyebrow">YOUR SELECTION</p><h2 id="garmentHeading">挑选婚纱</h2></div>
+<figure class="selected-garment">
+<img alt="原型矢量示意图，非真实商品" height="1698" id="selectedGarmentImage" src="assets/illustrations/look-1.svg" width="1098"/>
+<figcaption><div><h3 id="selectedGarmentName">Look A</h3><p id="selectedGarmentBrand">Sample Atelier B</p></div><span id="selectedGarmentDetail">挂脖 · 简洁轮廓</span></figcaption>
+</figure>
+<div aria-label="婚纱款式" class="garment-options" role="group">
+<button aria-label="选择 Look A 婚纱" aria-pressed="true" class="garment-option" data-brand="Sample Atelier B" data-detail="挂脖 · 简洁轮廓" data-garment="sample-look-a" data-name="Look A" type="button">
+<img alt="原型矢量示意图，非真实商品" height="1698" src="assets/illustrations/look-1.svg" width="1098"/><span>Look A</span>
+</button>
+<button aria-label="选择 Look B 婚纱" aria-pressed="false" class="garment-option" data-brand="Sample Atelier B" data-detail="方领 · 泡泡袖" data-garment="sample-look-b" data-name="Look B" type="button">
+<img alt="原型矢量示意图，非真实商品" height="1739" src="assets/illustrations/look-2.svg" width="1377"/><span>Look B</span>
+</button>
+<button aria-label="选择 Look C 婚纱" aria-pressed="false" class="garment-option" data-brand="Sample Atelier B" data-detail="蝴蝶结 · 缎面层次" data-garment="sample-look-c" data-name="Look C" type="button">
+<img alt="原型矢量示意图，非真实商品" height="1758" src="assets/illustrations/look-3.svg" width="1262"/><span>Look C</span>
+</button>
+<button aria-label="选择 Look D 婚纱" aria-pressed="false" class="garment-option" data-brand="Sample Atelier B" data-detail="挂脖 · 轻盈薄纱" data-garment="sample-look-d" data-name="Look D" type="button">
+<img alt="原型矢量示意图，非真实商品" height="1746" src="assets/illustrations/look-4.svg" width="1191"/><span>Look D</span>
+</button>
+</div>
+<p class="garment-note">款式影像仅供参考，实际可试款式以工作室确认为准。</p>
+</aside>
+</div>
+<section aria-labelledby="anywearHeading" class="anywear-connection">
+<div><p class="eyebrow">ANYWEAR BY DECART</p><h2 id="anywearHeading">实时试纱，下一步。</h2></div>
+<div class="anywear-details">此模块只演示款式选择及本地摄像头预览，未接入 AI 换装。不上传、不录制、不调用第三方服务。</div>
+</section>
+</main>
+<footer class="fitting-footer"><span>Bridal Studio · Demo City</span><a href="index.html#contact">联系工作室</a></footer>
+</body>
+</html>

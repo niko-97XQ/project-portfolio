@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | 企业级智能客服 Agent | 咨询接待与人工协同 | Python、企业微信、结构化模型决策、Markdown 检索、SQLite 持久化队列 | [项目介绍](projects/customer-service-agent/README.md) · [核心代码](projects/customer-service-agent/src/service_agent/) |
 | 工程文件翻译工作台 | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑 | [免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) · [项目与代码](projects/engineering-translation/) |
+| 婚纱工作室展示与预约网站 | 款式浏览与预约申请 | 原生前端、滚动交互、原生 dialog、HTTP 表单、SQLite 事务幂等与限流 | [项目介绍](projects/bridal-studio-website/README.md) · [前端代码](projects/bridal-studio-website/web/) · [预约核心](projects/bridal-studio-website/src/bridal_demo/) |
 
 这里只展示已经整理的项目，不将计划中的工作列为已完成成果。后续项目会继续添加到本表。
 
@@ -20,7 +21,9 @@
 
 第一个项目的入口：[技术架构](projects/customer-service-agent/docs/architecture.md)、[工程案例](projects/customer-service-agent/docs/engineering-cases.md)、[验证记录](projects/customer-service-agent/docs/validation.md)。
 
-客服项目公开节选：61 项本地回归通过，附带无需账号和密钥的离线演示。
+客服 Agent 公开节选有 61 项测试，婚纱网站有 18 项测试；两个 Python 项目共 79 项本地测试通过，都附带无需账号和密钥的隔离演示。
+
+婚纱网站另附独立的本机页面与合成预约演示：[架构](projects/bridal-studio-website/docs/architecture.md)、[工程案例](projects/bridal-studio-website/docs/engineering-cases.md)、[验证与限制](projects/bridal-studio-website/docs/validation.md)。实时 AI 试穿未完成接入，不计入已完成能力。
 
 ## 快速体验
 
@@ -39,6 +42,7 @@ python demo.py
 ```text
 projects/
   customer-service-agent/   首个项目：公开核心代码与隔离演示
+  bridal-studio-website/    展示交互、预约策略与本机演示
 templates/
   project/                 后续项目的中文介绍模板
 scripts/
