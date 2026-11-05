@@ -7,6 +7,7 @@
 | 项目 | 场景 | 技术重点 | 查看 |
 | --- | --- | --- | --- |
 | 企业级智能客服 Agent | 咨询接待与人工协同 | Python、企业微信、结构化模型决策、Markdown 检索、SQLite 持久化队列 | [项目介绍](projects/customer-service-agent/README.md) · [核心代码](projects/customer-service-agent/src/service_agent/) |
+| 工程文件翻译工作台 | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑 | [免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) · [项目与代码](projects/engineering-translation/) |
 
 这里只展示已经整理的项目，不将计划中的工作列为已完成成果。后续项目会继续添加到本表。
 
@@ -19,7 +20,7 @@
 
 第一个项目的入口：[技术架构](projects/customer-service-agent/docs/architecture.md)、[工程案例](projects/customer-service-agent/docs/engineering-cases.md)、[验证记录](projects/customer-service-agent/docs/validation.md)。
 
-当前公开节选：61 项本地回归通过，附带无需账号和密钥的离线演示。
+客服项目公开节选：61 项本地回归通过，附带无需账号和密钥的离线演示。
 
 ## 快速体验
 
