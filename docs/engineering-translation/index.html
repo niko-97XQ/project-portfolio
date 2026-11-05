@@ -1,16 +1,1 @@
-<!doctype html>
-<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>工程文件翻译工作台 · 项目演示</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#eef2ef;color:#172d2a;font:16px/1.65 system-ui,sans-serif}main,nav{max-width:1100px;margin:auto;padding:22px}header{background:#173e37;color:#fff}nav,.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header a{color:#d2ebe4}h1{font-size:clamp(30px,5vw,54px);letter-spacing:-.04em;margin:0}h2{font-size:20px;margin:0 0 16px}p{margin:6px 0 16px}.tag{font:700 13px monospace;letter-spacing:.1em;color:#316250}button,select,textarea{font:inherit}button,select{padding:7px 14px;border:1px solid #688075;border-radius:4px;background:white;color:#204537}button{cursor:pointer}button:hover{background:#e5eee9}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}.paper,aside{background:white;padding:24px;border:1px solid #b8c8be;border-top:4px solid #36705d}table{width:100%;border-collapse:collapse}th,td{border:1px solid #a5b4af;padding:10px;text-align:left}td:first-child{font:14px monospace;width:52px}textarea{width:100%;display:block;color:inherit;padding:4px;resize:vertical;border:1px dashed #9cb7ac;min-height:58px}#status{font-weight:bold}#issues{color:#894323}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #cb8531}footer{margin-top:24px;color:#52665e}@media(max-width:720px){.pair{grid-template-columns:1fr}.paper,aside{padding:14px}}
-</style>
-<header><nav><strong>工程翻译工作台</strong><a href="https://github.com/niko-97XQ/project-portfolio/tree/main/projects/engineering-translation">阅读项目与源码 ↗</a></nav></header>
-<main><p class="tag">FIELD NOTES / 工程校核</p><h1>同一张表，两种语言</h1>
-<p>试着把译文中的桩径从 600 改为 60，观察哪些内容会被拦截。样张和译文均为预置示例，核对规则在浏览器实时执行；无需登录，不调用付费模型。</p>
-<div class="bar"><label>选择样张　<select id="page"><option>01 · 桩基施工说明</option><option>02 · 马来语材料表</option></select></label>
-<div><button id="fault">模拟漏译与数字错误</button> <button id="restore">恢复样例译文</button></div></div>
-<div class="pair"><section class="paper"><div class="tag">01 / SOURCE</div><h2>工程原文</h2><table><thead><tr><th>编号</th><th>说明</th></tr></thead><tbody id="src"></tbody></table></section>
-<section class="paper"><div class="tag">02 / TRANSLATION</div><h2>中文译文 · 可编辑</h2><table><thead><tr><th>编号</th><th>说明</th></tr></thead><tbody id="dst"></tbody></table></section></div>
-<aside aria-live="polite"><div class="tag">03 / VERIFICATION</div><h2>逐项核对</h2><div id="status"></div><ul id="issues"></ul><small>此处检查已识别条目的数字、单位及写入情况；通过不代表语义准确，也不能发现未识别的原文。</small></aside>
-<footer>正式系统支持逐页翻译、视觉自查与中断续跑。此公开演示只处理合成样张，刷新后恢复初始内容。</footer></main>
-<script type="module" src="./demo.mjs"></script></html>
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=https://api.forthatday-studio.com/translate-interview"><title>工程文件翻译工作台</title><p><a href="https://api.forthatday-studio.com/translate-interview">进入真实翻译工作台（免登录）</a></p></html>

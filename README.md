@@ -7,7 +7,7 @@
 | 项目 | 应用场景 | 能做什么 | 技术栈 |
 | --- | --- | --- | --- |
 | [Forthatday 企业微信智能客服](projects/customer-service-agent/README.md) | 婚纱工作室的到店前咨询、试纱预约和店员协同 | 自动问答、款式推荐与发图、预约确认、付款截图识别、改期取消、人工接管、库存与预约管理、官网预约申请 | Python、DeepSeek、企业微信 API、Markdown 检索、SQLite、RapidOCR、Docker |
-| [工程文件翻译工作台](projects/engineering-translation/) | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑；[免登录体验](https://niko-97xq.github.io/project-portfolio/engineering-translation/) | 模型翻译、SQLite 队列、逐页检查点、浏览器演示 |
+| [工程文件翻译工作台](projects/engineering-translation/) | 英语、马来语工程文件译中 | 原位写入、数字单位核验、断点续跑；[免密码进入真实工作台](https://api.forthatday-studio.com/translate-interview) | 模型翻译、SQLite 队列、逐页检查点、中文预览与原格式导出 |
 | [婚纱工作室官网（V13 原版）](projects/bridal-studio-website/) | 款式展示与预约申请 | 滚动时间轴、响应式布局、预约弹窗、提交状态与幂等重试；[原版官网](https://api.forthatday-studio.com/bridal/) | 原生前端、CSS、JavaScript、dialog |
 
 每个项目独立放在 `projects/` 下；后续继续添加，不把计划中的工作写成已完成成果。
