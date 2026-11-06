@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 import subprocess
 from pathlib import Path
@@ -21,10 +22,14 @@ TEST_PHONES = {"13800000000", "13800138000", "17300000000"}
 LOCAL_OR_TEST_IPS = {"127.0.0.1", "0.0.0.0", "192.0.2.1"}
 ALLOWED_HOSTS = {
     "niko-97xq.github.io", "github.com", "api.deepseek.com", "qyapi.weixin.qq.com",
-    "api.siliconflow.cn", "open.weixin.qq.com",
+    "api.siliconflow.cn", "open.weixin.qq.com", "work.weixin.qq.com",
     "forthatday-studio.com", "api.forthatday-studio.com",
 }
 FORBIDDEN_NAMES = {"brands.md", "Caddyfile.domain-verification", "server-deployment-info.md"}
+REVIEWED_PUBLIC_ASSETS = {
+    "projects/customer-service-agent/assets/wecom-customer-service-qr.png":
+        "76d067446d3a1b583c9826ab07b21b0fd74cf67f1b954df5e8c5686044518c15",
+}
 
 
 def main() -> None:
@@ -47,6 +52,10 @@ def main() -> None:
             or (path.name.startswith(".env") and path.name not in {".env.example", ".env.production.example"})
         ):
             findings.append(f"{name}: private/runtime file")
+        if name in REVIEWED_PUBLIC_ASSETS:
+            if hashlib.sha256(path.read_bytes()).hexdigest() != REVIEWED_PUBLIC_ASSETS[name]:
+                findings.append(f"{name}: reviewed public asset changed; review before publishing")
+            continue
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:

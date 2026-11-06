@@ -21,6 +21,14 @@
 
 **查看：[应用场景与完整功能](projects/customer-service-agent/README.md) · [原版源码](projects/customer-service-agent/src/forthatday_agent/) · [架构](projects/customer-service-agent/docs/architecture.md) · [工程案例](projects/customer-service-agent/docs/engineering-cases.md)**
 
+### 微信客服体验
+
+使用微信扫描下方二维码，或在手机上[打开微信客服](https://work.weixin.qq.com/kfid/kfc9da7a6d9b345f352)。
+
+<img src="projects/customer-service-agent/assets/wecom-customer-service-qr.png" alt="Forthatday 微信客服二维码" width="320">
+
+这是实际业务客服入口，建议仅咨询试纱流程、门店地址或款式偏好；请勿为测试提交无意预约或付款凭证。
+
 ## 客服项目原版范围
 
 - 保留原项目 `forthatday_agent` 包名、业务实现、提示词、员工界面、知识检索和平台适配，不再以泛化后的代码节选替代。
